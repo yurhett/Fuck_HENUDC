@@ -1,0 +1,62 @@
+#登陆相关配置
+login:
+  #开放的模拟登陆api服务器地址
+  api: "https://xariapapi.azurewebsites.net/api/login"
+
+#用户组配置
+users:
+  #单个用户配置
+  - user:
+      #这里填写你的UA，否则就用我的UA，非安卓手机不行，获取UA请看清楚说明再操作！
+      ua: 'Mozilla/5.0 (Linux; Android 8.1.0; 16th Plus Build/OPM1.171019.026; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/65.0.3325.110 Mobile Safari/537.36'
+      useserverchan: 1
+      serverchankey: '这里填写你的skey'
+      usecookies: 0
+      cookies:
+      #username 学号或者工号
+      username: '这里填写学号'
+      #password 密码
+      password: '这里填写密码'
+      #address 地址，定位信息  中国河南省xx市xx区xx路
+      address: '这里填写中国＋你获取到的地址'
+      #school 学校全称
+      school: '河南大学'
+      #lon 填写你的经度，精确到小数点后五位，一定一定一定！
+      lon: '114.36922'
+      #lat 填写你的纬度，精确到小数点后五位，一定一定一定！
+      lat: '34.81070'
+      #abnormalReason 反馈信息，不要填
+      abnormalReason:
+      #photo 签到照片，不要填
+      photo:
+  #多用户配置，将下面的注释去掉即可，如果有表单内容有图片，不建议使用多用户配置
+#今日校园相关配置
+cpdaily:
+  #是否检查问题,true检查，false不检查
+  check: true
+  #附加信息组默认选项配置，没有可留空
+  defaults:
+    - default:
+        title: 一、本人身体状况（）
+        value: A：体温正常，身体健康
+    - default:
+        title: 二、与本人共同居住人员的身体健康状况（）
+        value: A:体温正常，身体健康
+    - default:
+        title: 三、本人现居小区、社区（村）、街道（乡/镇）是否为中高风险地区（）
+        value: A:否
+    - default:
+        title: 本人是否曾经离开居住地，前往中高风险地区（）
+        value: A:否
+  #附加信息组默认选项配置，按顺序，可留空
+  #    - default:
+  #        #表单项标题
+  #        title: 体温
+  #        #表单项默认值
+  #        value: 正常
+  #多个额外选项配置
+#    - default:
+#        #表单项标题
+#        title: 体温
+#        #表单项默认值
+#        value: 正常
