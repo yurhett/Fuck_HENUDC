@@ -2,6 +2,8 @@
 
 ### 使用方法：
 
+#### 0.点右上角的FORK，fork到你的私人仓库里
+
 #### 1.收集信息
 
 - #### 验证你的河大账号和密码：[点击链接](https://ids.henu.edu.cn/authserver/login?service=https%3A%2F%2Fhenu.campusphere.net%2Fportal%2Flogin)并用你的学号登录，记住你登陆成功的学号和密码。
@@ -16,7 +18,7 @@
 
   #### 复制生成的文字，注意，粘贴时请不要粘贴文字尾部的：cpdaily/8.2.17 wisedu/8.2.17
 
-#### 2.配置config.yml
+#### 2.编辑config.yml
 
 ```yaml
 ua: '这里填写你的UA，否则就用我的UA'
