@@ -2,7 +2,11 @@
 
 ### 使用方法：
 
-#### 0.点右上角的FORK，fork到你的私人仓库里
+#### 0.（懒人）点右上角的FORK，fork到你的仓库里
+
+注意：这个方法会导致你配置的yml别人也能下到，不怕别人知道你学号的上
+
+#### 0.（安全）打开你自己的GitHub首页，新建项目并克隆我的源码。小白请按照：网页链接
 
 #### 1.收集信息
 
@@ -45,3 +49,6 @@ abnormalReason:
 photo:
 ```
 
+#### 3.鸣谢：
+
+##### 感谢[@ZimoLoveShuang](https://github.com/ZimoLoveShuang) 提供80%的过程和源代码，本项目就是在他的[auto-sign](https://github.com/ZimoLoveShuang/auto-sign)基础上简单修改而来，有空帮他点个star吧~
