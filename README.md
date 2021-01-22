@@ -21,6 +21,7 @@
 #### 2.编辑config.yml
 
 ```yaml
+enable: 1 #请将0改为1否则无法使用
 ua: '这里填写你的UA，否则就用我的UA'
 useserverchan: 1
 serverchankey: '这里填写你的skey'
