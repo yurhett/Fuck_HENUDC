@@ -117,17 +117,41 @@ def getSession(user, apis):
 
     cookies = {}
     # 借助上一个项目开放出来的登陆API，模拟登陆
+    if 'enable' in user:
+        if user['enable'] == 0:
+            print('您设定了enable=0,安全模式将不会获取COOKIE，您想要使用的话请删除config.yml里面的noapi=1!')
+            sendMessage('如果您看到这条消息，请您去github上重新设置您的config。', user, '报错提醒-今日校园自动签到')
+            exit(9)
     if user['usecookies'] == 0:
         res = ''
         try:
-            res = requests.post(config['login']['api'], data=params)
+            j=0
+            for i in range(0,5):
+                print("使用config中定义的api")
+                res = requests.post(config['login']['api'], data=params)
+                if 'success' not in res.json()['msg']:
+                    print(f'第{j+1}次未获取到Cookies')
+                    j=j+1
+                else:
+                    break
+            if 'success' not in res.json()['msg']:
+                print(f'{j}次尝试也没有cookies，可能学校服务器坏了，自己弄吧！')
+                sendMessage(f'如果您看到这条消息，证明{j}次尝试也没有cookies，可能学校服务器坏了，自己弄吧！', user)
+                exit(888)
+            print(res.json())
         except Exception as e:
             res = requests.post(url='http://www.zimo.wiki:8080/wisedu-unified-login-api-v1.0/api/login', data=params)
+            print("使用子墨的API")
+            if 'success' not in res.json()['msg']:
+                print('用子墨的API也没有获取到Cookies')
+                sendMessage(f'如果您看到这条消息，证明子墨的api也没有获取到cookies，可能学校服务器坏了，自己弄吧！', user, '报错提醒-今日校园自动签到')
+
 
         # cookieStr可以使用手动抓包获取到的cookie，有效期暂时未知，请自己测试
         # cookieStr = str(res.json()['cookies'])
         cookieStr = str(res.json()['cookies'])
         print('已从API获取到Cookie')
+        #exit(999)
     else:
         cookieStr = user['cookies']
         print('使用文件内Cookie')
@@ -349,7 +373,7 @@ def submitForm(session, user, form, apis):
 
 
 # 发送邮件通知
-def sendMessage(msg, user):
+def sendMessage(msg, user, title=getTimeStr() + '今日校园自动签到结果通知'):
     if msg.count("未开始") > 0:
         return ''
     print(user)
@@ -358,7 +382,7 @@ def sendMessage(msg, user):
             log('正在发送微信通知')
             log(getTimeStr())
             #               sendMessageWeChat(msg + getTimeStr(), '今日校园自动签到结果通知')
-            notification.send_serverchan(user['serverchankey'], getTimeStr() + '今日校园自动签到结果通知', msg)
+            notification.send_serverchan(user['serverchankey'], title, msg)
     except Exception as e:
         log("send failed")
 
