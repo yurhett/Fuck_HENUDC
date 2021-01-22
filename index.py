@@ -119,7 +119,7 @@ def getSession(user, apis):
     # 借助上一个项目开放出来的登陆API，模拟登陆
     if 'enable' in user:
         if user['enable'] == 0:
-            print('您设定了enable=0,安全模式将不会获取COOKIE，您想要使用的话请删除config.yml里面的noapi=1!')
+            print('您设定了enable=0,安全模式将不会获取COOKIE，您想要使用的话请修改config.yml里面的到enable=1!')
             sendMessage('如果您看到这条消息，请您去github上重新设置您的config。', user, '报错提醒-今日校园自动签到')
             exit(9)
     if user['usecookies'] == 0:
