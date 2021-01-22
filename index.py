@@ -130,6 +130,7 @@ def getSession(user, apis):
                 print("使用config中定义的api")
                 res = requests.post(config['login']['api'], data=params)
                 if 'success' not in res.json()['msg']:
+                    time.sleep(5)
                     print(f'第{j+1}次未获取到Cookies')
                     j=j+1
                 else:
