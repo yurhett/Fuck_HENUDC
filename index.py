@@ -121,7 +121,7 @@ def getSession(user, apis):
         if user['enable'] == 0:
             print('您设定了enable=0,安全模式将不会获取COOKIE，您想要使用的话请修改config.yml里面的到enable=1!')
             sendMessage('如果您看到这条消息，请您去github上重新设置您的config。', user, '报错提醒-今日校园自动签到')
-            exit(9)
+            exit(888)
     if user['usecookies'] == 0:
         res = ''
         try:
@@ -195,7 +195,7 @@ def getUnSignedTasksAndSign(session, apis, user):
     if len(res.json()['datas']['unSignedTasks']) < 1:
         log('当前没有未签到任务')
         sendMessage('当前没有未签到任务', user['user'])
-        exit(-1)
+        exit(0)
     elif time.localtime().tm_hour in [18, 19, 20, 21, 22, 23, 24, 0, 1, 2, 3, 4, 5, 6, 7]:
         print('未在签到时间，等会再来吧！')
         sendMessage('自定义限制：未在签到时间，等会再来吧！', user['user'])
@@ -370,7 +370,7 @@ def submitForm(session, user, form, apis):
         log('自动签到失败，原因是：' + message)
         sendMessage('自动签到失败' + message, user)
         # sendMessage('自动签到失败，原因是：' + message, user['email'])
-        exit(-1)
+        exit(0)
 
 
 # 发送邮件通知
