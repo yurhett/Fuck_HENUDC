@@ -391,11 +391,14 @@ def sendMessage(msg, user, title=getTimeStr() + '今日校园自动签到结果�
 # 主函数
 def main():
     for user in config['users']:
-        print(user)
-
-        apis = getCpdailyApis(user)
-        session = getSession(user, apis)
-        getUnSignedTasksAndSign(session, apis, user)
+        try:
+            print(user)
+            apis = getCpdailyApis(user)
+            session = getSession(user, apis)
+            getUnSignedTasksAndSign(session, apis, user)
+        except:
+            print("有一个user出错啦")
+            continue
 
 
 # 提供给腾讯云函数调用的启动函数
