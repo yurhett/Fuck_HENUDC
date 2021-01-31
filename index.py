@@ -125,14 +125,14 @@ def getSession(user, apis):
     if user['usecookies'] == 0:
         res = ''
         try:
-            j=0
-            for i in range(0,5):
+            j = 0
+            for i in range(0, 5):
                 print("使用config中定义的api")
                 res = requests.post(config['login']['api'], data=params)
                 if 'success' not in res.json()['msg']:
                     time.sleep(5)
-                    print(f'第{j+1}次未获取到Cookies')
-                    j=j+1
+                    print(f'第{j + 1}次未获取到Cookies')
+                    j = j + 1
                 else:
                     break
             if 'success' not in res.json()['msg']:
@@ -147,12 +147,11 @@ def getSession(user, apis):
                 print('用子墨的API也没有获取到Cookies')
                 sendMessage(f'如果您看到这条消息，证明子墨的api也没有获取到cookies，可能学校服务器坏了，自己弄吧！', user, '报错提醒-今日校园自动签到')
 
-
         # cookieStr可以使用手动抓包获取到的cookie，有效期暂时未知，请自己测试
         # cookieStr = str(res.json()['cookies'])
         cookieStr = str(res.json()['cookies'])
         print('已从API获取到Cookie')
-        #exit(999)
+        # exit(999)
     else:
         cookieStr = user['cookies']
         print('使用文件内Cookie')
@@ -176,7 +175,7 @@ def getSession(user, apis):
 def getUnSignedTasksAndSign(session, apis, user):
     headers = {
         'Accept': 'application/json, text/plain, */*',
-        'User-Agent': user['user']['ua']+'  cpdaily/8.2.17 wisedu/8.2.17',
+        'User-Agent': user['user']['ua'] + '  cpdaily/8.2.17 wisedu/8.2.17',
         'content-type': 'application/json',
         'Accept-Encoding': 'gzip,deflate',
         'Accept-Language': 'zh-CN,en-US;q=0.8',
@@ -199,9 +198,8 @@ def getUnSignedTasksAndSign(session, apis, user):
     elif time.localtime().tm_hour in [18, 19, 20, 21, 22, 23, 24, 0, 1, 2, 3, 4, 5, 6, 7]:
         print('未在签到时间，等会再来吧！')
         sendMessage('自定义限制：未在签到时间，等会再来吧！', user['user'])
-        #exit(8)
-        #TODO 删掉
-
+        # exit(8)
+        # TODO 删掉
 
     # log(res.json())
     for i in range(0, len(res.json()['datas']['unSignedTasks'])):
@@ -227,7 +225,7 @@ def getUnSignedTasksAndSign(session, apis, user):
 def getDetailTask(session, params, apis, user):
     headers = {
         'Accept': 'application/json, text/plain, */*',
-        'User-Agent': user['user']['ua']+'  cpdaily/8.2.17 wisedu/8.2.17',
+        'User-Agent': user['user']['ua'] + '  cpdaily/8.2.17 wisedu/8.2.17',
         'content-type': 'application/json',
         'Accept-Encoding': 'gzip,deflate',
         'Accept-Language': 'zh-CN,en-US;q=0.8',
@@ -346,7 +344,7 @@ def submitForm(session, user, form, apis):
 
     headers = {
         'tenantId': 'henu',
-        'User-Agent': user['ua']+' okhttp/3.12.4',
+        'User-Agent': user['ua'] + ' okhttp/3.12.4',
         'CpdailyStandAlone': '0',
         'extension': '1',
         'Cpdaily-Extension': DESEncrypt(json.dumps(extension)),
@@ -357,15 +355,15 @@ def submitForm(session, user, form, apis):
     }
     print(extension)
     print(headers)
-    #print('程序还有一步就提交了，已暂停')
-    #exit(888)
+    # print('程序还有一步就提交了，已暂停')
+    # exit(888)
     # TODO 设置提交锁的位置
     res = session.post(url='https://{host}/wec-counselor-sign-apps/stu/sign/submitSign'.format(host=apis['host']),
                        headers=headers, data=json.dumps(form))
     message = res.json()['message']
     if message == 'SUCCESS':
         log('自动签到成功')
-        sendMessage('自动签到成功', user)
+        sendMessage('自动签到成功', user, title='今日校园签到成功通知')
     else:
         log('自动签到失败，原因是：' + message)
         sendMessage('自动签到失败' + message, user)
@@ -374,7 +372,7 @@ def submitForm(session, user, form, apis):
 
 
 # 发送邮件通知
-def sendMessage(msg, user, title=getTimeStr() + '今日校园自动签到结果通知'):
+def sendMessage(msg, user, title='[INFO] 今日校园自动签到信息通知'):
     if msg.count("未开始") > 0:
         return ''
     print(user)
@@ -383,7 +381,7 @@ def sendMessage(msg, user, title=getTimeStr() + '今日校园自动签到结果�
             log('正在发送微信通知')
             log(getTimeStr())
             #               sendMessageWeChat(msg + getTimeStr(), '今日校园自动签到结果通知')
-            notification.send_serverchan(user['serverchankey'], title, msg)
+            notification.send_serverchan(user['serverchankey'], title, getTimeStr() + ' ' + msg)
     except Exception as e:
         log("send failed")
 
