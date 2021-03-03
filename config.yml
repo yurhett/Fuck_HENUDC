@@ -27,6 +27,8 @@ users:
       lon: '114.36922'
       #lat 填写你的纬度，精确到小数点后五位，一定一定一定！
       lat: '34.81070'
+      #校内填0校外填1
+      isMalposition: 0
       #abnormalReason 反馈信息，不要填
       abnormalReason:
       #photo 签到照片，不要填

@@ -276,7 +276,7 @@ def fillForm(task, session, user, apis):
     form['signInstanceWid'] = task['signInstanceWid']
     form['longitude'] = user['lon'] + rand_lon
     form['latitude'] = user['lat'] + rand_lat
-    form['isMalposition'] = 1
+    form['isMalposition'] = user['isMalposition']
     form['uaIsCpadaily'] = True
     ################这个参数一定不能穿帮！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
     form['abnormalReason'] = user['abnormalReason']
