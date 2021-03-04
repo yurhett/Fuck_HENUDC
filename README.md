@@ -12,7 +12,7 @@
 
 - #### 验证你的河大账号和密码：[点击链接](https://ids.henu.edu.cn/)并用你的学号登录，记住你登陆成功的学号和密码。
 
-- #### 确认你的地址：[点击链接](https://lbs.qq.com/tool/getpoint/index.html)并选择你经常签到的地址。如：34.810703,114.369221 河南省开封市顺河回族区琢玉路。
+- #### 确认你的地址：[点击链接](https://lbs.qq.com/tool/getpoint/index.html)并选择你经常签到的地址。如：34.810703,114.369221（请不要填写这个坐标，经测试，相对偏移较大） 河南省开封市顺河回族区琢玉路，然后[点击链接](http://api.map.baidu.com/lbsapi/getpoint/index.html)选择刚才的点位，获得坐标，如：114.376956,34.820271。
 
 - #### 记录你的skey：[点击链接](http://sc.ftqq.com/?c=code)微信登录后复制您的SCKEY代码
 
