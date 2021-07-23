@@ -70,9 +70,9 @@ def ua_check(ua, compare):
         return False
 
 # 以下代码可用作测试函数可用性
-'''raw_ua = 'Mozilla/5.0 (Linux; U; Android 10; zh-cn; Redmi K20 Pro Build/QKQ1.190825.002) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/79.0.3945.147 Mobile Safari/537.36 XiaoMi/MiuiBrowser/13.7.12'
+"""raw_ua = 'Mozilla/5.0 (Linux; U; Android 10; zh-cn; Redmi K20 Pro Build/QKQ1.190825.002) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/79.0.3945.147 Mobile Safari/537.36 XiaoMi/MiuiBrowser/13.7.12'
 print(type(raw_ua))
 print(ua2androidver(raw_ua))
 print(ua2model(raw_ua))
 print(ua2sysver(raw_ua))
-'''
+"""
