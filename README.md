@@ -8,7 +8,7 @@
 
 注意：这个方法会导致你配置的yml别人也能下到，不怕别人知道你学号的上
 
-#### 0.（安全）打开你自己的GitHub首页，新建项目并克隆我的源码。小白请按照：https://github.com/yurhett/Fuck_HENUDC/tree/main/pic
+#### 0.（安全）打开你自己的GitHub首页，新建项目并克隆我的源码。小白请按照：https://github.com/yurhett/Fuck_HENUDC/tree/main/doc
 
 #### 1.收集信息
 
