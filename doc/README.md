@@ -12,6 +12,6 @@
 
 ### ![image-20210723084930069](./image-20210723084930069.png)
 
-### 4.然后填入"Your old repository’s clone URL"为"https://github.com/yurhett/Fuck_HENUDC.git"，并"Begin import"
+### 4.然后填入"Your old repository’s clone URL"为"https://github.com/yurhett/Fuck_HENUDC.git "，并"Begin import"
 
 ![image-20210723085243520](./image-20210723085243520.png)
