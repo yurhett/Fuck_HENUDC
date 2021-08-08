@@ -1,6 +1,7 @@
     #调试是改为true将可以在控制台定位报错信息
     debug: false
-
+    #百度地图ak
+    baidumap:
     users:
 
       - user:

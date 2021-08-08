@@ -9,6 +9,22 @@ from actions.workLog import workLog
 from actions.sleepCheck import sleepCheck
 from actions.sendMsg import qmsgpush
 
+def randomPosition(ak, lon, lat):
+    import requests
+    url = "https://api.map.baidu.com/reverse_geocoding/v3/"
+    params = {
+        "location": str(lat)+','+str(lon),
+        "output": "json",
+        "ak": ak,
+        "coordtype": "bd09ll"  # 返回gcj02ll坐标，可以选择其他坐标系
+    }
+    try:
+        res = requests.get(url, params=params)
+        temp = res.json()
+        return temp['result']['formatted_address']
+    except:
+        return None
+
 
 def getYmlConfig(yaml_file='config.yml'):
     file = open(yaml_file, 'r', encoding="utf-8")
@@ -24,7 +40,9 @@ def main():
     for user in config['users']:
         lgp = qmsgpush()
         lgp.set_single_push(key=user['user']['qmsg'],qq=user['user']['qq'])
+        user['user']['baidumap'] = config['baidumap']
         if config['debug']:
+            # 公用变量嵌入在此处
             msg = working(user)
         else:
             try:
@@ -41,10 +59,22 @@ def main():
 
 
 def working(user):
-    rand_lon = str(random.randint(0, 9))
-    rand_lat = str(random.randint(0, 9))
-    user['user']['lon'] = str(user['user']['lon']) + rand_lon
-    user['user']['lat'] = str(user['user']['lat']) + rand_lat
+    rand_lon = str(random.randint(0, 999)).zfill(3)
+    rand_lat = str(random.randint(0, 999)).zfill(3)
+    format(float(user['user']['lon']), '.2f')
+    tmp_lon = str(format(float(user['user']['lon']), '.3f')) + rand_lon
+    tmp_lat = str(format(float(user['user']['lat']), '.3f')) + rand_lat
+    tmp_pos = randomPosition(user['user']['baidumap'],tmp_lon,tmp_lat)
+    if tmp_pos is not None:
+        user['user']['lon'] = tmp_lon
+        user['user']['lat'] = tmp_lat
+        user['user']['address'] = tmp_pos
+    else:
+        rand_lon = str(random.randint(0, 9))
+        rand_lat = str(random.randint(0, 9))
+        user['user']['lon'] = str(user['user']['lon']) + rand_lon
+        user['user']['lat'] = str(user['user']['lat']) + rand_lat
+
     today = TodayLoginService(user['user'])
     today.login()
     # 登陆成功，通过type判断当前属于 信息收集、签到、查寝

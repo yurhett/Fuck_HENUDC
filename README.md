@@ -1,5 +1,7 @@
 # FUCK_HENUDC
 
+#### 20210808 更新新功能，让您每天的坐标都小范围变化。
+
 #### 20210723 已适配最新版本
 
 ### 使用方法：
@@ -23,13 +25,16 @@
   ![image](./doc/qrcode.png)
 
   #### 复制生成的文字，注意，粘贴时请不要粘贴文字尾部的：cpdaily/8.2.17 wisedu/8.2.17
+  
+  #### 特殊步骤：您可以到 [https://lbsyun.baidu.com/apiconsole/key#/home](https://lbsyun.baidu.com/apiconsole/key#/home) 创建浏览器端应用，然后复制您的ak
 
 #### 2.编辑config.yml
 
 ```yaml
 #调试是改为true将可以在控制台定位报错信息
 debug: false
-
+#百度地图ak
+baidumap:
 users:
 
   - user:
