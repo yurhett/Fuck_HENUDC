@@ -1,5 +1,7 @@
 # FUCK_HENUDC
 
+#### 20210902 更新九月一日的新问卷，支持双问卷签到，双问卷签到并非一次完成，所以务必多次运行以覆盖所有签到 修复发送消息时容易被qmsg吞掉的问题
+
 #### 20210808 更新新功能，让您每天的坐标都小范围变化。
 
 #### 20210723 已适配最新版本
@@ -28,7 +30,7 @@
   
   #### 特殊步骤：您可以到 [https://lbsyun.baidu.com/apiconsole/key#/home](https://lbsyun.baidu.com/apiconsole/key#/home) 创建浏览器端应用，然后复制您的ak
 
-#### 2.编辑config.yml
+#### 2.编辑config.yml（点击config.yml，右上角的铅笔图标就是编辑）
 
 ```yaml
 #调试是改为true将可以在控制台定位报错信息

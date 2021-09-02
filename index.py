@@ -16,7 +16,7 @@ def randomPosition(ak, lon, lat):
         "location": str(lat)+','+str(lon),
         "output": "json",
         "ak": ak,
-        "coordtype": "bd09ll"  # 返回gcj02ll坐标，可以选择其他坐标系
+        "coordtype": "bd09ll"
     }
     try:
         res = requests.get(url, params=params)
@@ -49,7 +49,7 @@ def main():
                 msg = working(user)
             except Exception as e:
                 msg = str(e)
-        adminmsg = adminmsg + '\n' + f'[INFO]{user["user"]["nickname"]} {user["user"]["username"]} 的今日校园自动签到' + msg
+        adminmsg = adminmsg + '\n' + f'[INFO]{user["user"]["nickname"]} 的今日校园自动签到' + msg
         lgp.single_push(f'[INFO]{user["user"]["nickname"]}您好，学号为 {user["user"]["username"]} 的今日校园自动签到', msg)
         print(msg)
         time.sleep(random.randint(3,5))

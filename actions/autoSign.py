@@ -93,15 +93,24 @@ class AutoSign:
         self.form['isNeedExtra'] = self.task['isNeedExtra']
         if self.task['isNeedExtra'] == 1:
             extraFields = self.task['extraField']
-            userItems = self.userInfo['forms']
+            userItems = self.userInfo['forms1']
             extraFieldItemValues = []
             for i in range(len(extraFields)):
                 userItem = userItems[i]['form']
                 extraField = extraFields[i]
                 if self.userInfo['checkTitle'] == 1:
                     if userItem['title'] != extraField['title']:
-                        raise Exception(
-                            f'\r\n第{i + 1}个配置出错了\r\n您的标题为：{userItem["title"]}\r\n系统的标题为：{extraField["title"]}')
+                        if 'forms2' in self.userInfo:
+                            userItems = self.userInfo['forms2']
+                            userItem = userItems[i]['form']
+                            if userItem['title'] != extraField['title']:
+                                raise Exception(
+                                    f'\r\n第二个表单第{i + 1}个配置出错了\r\n您的标题为：{userItem["title"]}\r\n系统的标题为：{extraField["title"]}')
+                        else:
+                            raise Exception(
+                                f'\r\n第二个表单第{i + 1}个配置出错了\r\n您的标题为：{userItem["title"]}\r\n系统的标题为：{extraField["title"]}')
+
+
                 extraFieldItems = extraField['extraFieldItems']
                 flag = False
                 for extraFieldItem in extraFieldItems:
@@ -165,4 +174,4 @@ class AutoSign:
         # print(json.dumps(self.form))
         res = self.session.post(f'{self.host}wec-counselor-sign-apps/stu/sign/submitSign', headers=headers,
                                 data=json.dumps(self.form), verify=False).json()
-        return res['message'] + '提交的内容是：' + str(headers) + str(self.form)
+        return '服务器返回：'+res['message'] + '\n今日提交的地址在：' + str(self.form['position'])+ '\n注意：如果还有未提交的签到，下次运行时将会尝试提交。'

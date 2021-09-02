@@ -108,7 +108,7 @@ def getSession(user, apis):
     user = user['user']
     params = {
         # 'login_url': 'http://authserverxg.swu.edu.cn/authserver/login?service=https://swu.cpdaily.com/wec-counselor-sign-apps/stu/sign/getStuSignInfosInOneDay',
-        'login_url': apis['login-url'],
+        'login_url': 'https://ids.henu.edu.cn/authserver/login?service=https%3A%2F%2Fids.henu.edu.cn%2Fauthserver%2Fmobile%2Fcallback%3FappId%3D277935239',
         'needcaptcha_url': '',
         'captcha_url': '',
         'username': user['username'],
@@ -175,7 +175,7 @@ def getSession(user, apis):
 def getUnSignedTasksAndSign(session, apis, user):
     headers = {
         'Accept': 'application/json, text/plain, */*',
-        'User-Agent': user['user']['ua'] + '  cpdaily/8.2.17 wisedu/8.2.17',
+        'User-Agent': user['user']['ua'] + '  cpdaily/9.0.0 wisedu/9.0.0',
         'content-type': 'application/json',
         'Accept-Encoding': 'gzip,deflate',
         'Accept-Language': 'zh-CN,en-US;q=0.8',
@@ -225,7 +225,7 @@ def getUnSignedTasksAndSign(session, apis, user):
 def getDetailTask(session, params, apis, user):
     headers = {
         'Accept': 'application/json, text/plain, */*',
-        'User-Agent': user['user']['ua'] + '  cpdaily/8.2.17 wisedu/8.2.17',
+        'User-Agent': user['user']['ua'] + '  cpdaily/9.0.0 wisedu/9.0.0',
         'content-type': 'application/json',
         'Accept-Encoding': 'gzip,deflate',
         'Accept-Language': 'zh-CN,en-US;q=0.8',
@@ -317,7 +317,7 @@ def getPictureUrl(session, fileName, apis):
 
 
 # DES加密
-def DESEncrypt(s, key='b3L36XNL'):
+def DESEncrypt(s, key='b3L26XNL'):
     key = key
     iv = b"\x01\x02\x03\x04\x05\x06\x07\x08"
     k = des(key, CBC, iv, pad=None, padmode=PAD_PKCS5)
@@ -334,7 +334,7 @@ def submitForm(session, user, form, apis):
     extension = {
         "lon": user['lon'] + rand_lon,
         "model": uanalyse.ua2model(user['ua']),
-        "appVersion": "8.2.17",
+        "appVersion": "9.0.0",
         "systemVersion": uanalyse.ua2androidver(user['ua']),
         "userId": user['username'],
         "systemName": "android",
@@ -387,13 +387,9 @@ def sendMessage(msg, user, title='[INFO] 今日校园自动签到信息通知'):
 
 
 # 主函数
-def main():
-    for user in config['users']:
+'''def main():
         try:
-            print(user)
-            apis = getCpdailyApis(user)
-            session = getSession(user, apis)
-            getUnSignedTasksAndSign(session, apis, user)
+            continue
         except:
             print("有一个user出错啦")
             continue
@@ -406,9 +402,14 @@ def main_handler(event, context):
     except Exception as e:
         raise e
     else:
-        return 'success'
+        return 'success'''
 
 
 if __name__ == '__main__':
     # print(extension)
-    print(main_handler({}, {}))
+    #print(main_handler({}, {}))
+    for user in config['users']:
+        print(user)
+        apis = getCpdailyApis(user)
+        session = getSession(user, apis)
+        getUnSignedTasksAndSign(session, apis, user)
