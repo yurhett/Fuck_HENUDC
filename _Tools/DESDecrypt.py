@@ -17,4 +17,4 @@ def des_descrypt(s):
     decrypt_str = des_obj.decrypt(s, padmode=PAD_PKCS5)
     return decrypt_str
 
-print(des_descrypt('6XkC1UAk07fK0uTaGPUu77i/+r7j/o1JQ/XygRxee2LMiX5H+w/BOlgBGXJ4 SffK1rZ+7Ls/vCLzlOoLWsauNtTeqlazZ2uUMDVlhrZTxA5dknDNirB3uvVC sv4GH/EX82nHiibHYU4iFs3hnIj+6Q+hWaYxzXtjC+VmT2XIPIv/sh8M3i6t nvROntJyD1p54nxzL9gatbx+iscXRJ7OEVIm483fLTYK6B0cFuj+HSsAWM0U ZPFErEyhIcwmwvnK'))
+print(des_descrypt(''))

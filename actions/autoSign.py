@@ -153,7 +153,7 @@ class AutoSign:
         extension = {
             "lon": self.userInfo['lon'],
             "model": uanalyse.ua2model(self.userInfo['ua']),
-            "appVersion": "9.0.7",
+            "appVersion": "9.0.10",
             "systemVersion": uanalyse.ua2androidver(self.userInfo['ua']),
             "userId": self.userInfo['username'],
             "systemName": "android",
