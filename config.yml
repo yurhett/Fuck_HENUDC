@@ -1,4 +1,7 @@
-
+    login:
+    #开放的模拟登陆api服务器地址
+        api: "https://xariapapi.azurewebsites.net/api/login"
+        
     debug : false
     baidumap : 
     users : 
