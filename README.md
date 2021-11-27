@@ -36,7 +36,7 @@
 
 #### 3.安装依赖库
 ```cpp
-cd ~/.Fuck_HENUDC
+cd ~/.Fuck_HENUDC 
 pip install -r arequirements.txt
 ```
 
