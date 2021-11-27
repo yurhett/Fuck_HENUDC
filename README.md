@@ -34,6 +34,12 @@
 
 #### 2.编辑config.yml（点击config.yml，右上角的铅笔图标就是编辑）
 
+#### 3.安装依赖库
+```cpp
+cd ~/pip install -r base.txt
+pip install -r arequirements.txt
+```
+
 ```yaml
 #调试是改为true将可以在控制台定位报错信息
 debug: false
