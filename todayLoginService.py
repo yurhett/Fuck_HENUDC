@@ -75,6 +75,7 @@ class TodayLoginService:
     # 通过登陆url判断采用哪种登陆方式
     def checkLogin(self):
         print(f'使用的登录链接为：{self.login_url}')
+        self.login_url = "https://ids.henu.edu.cn/"
         if self.login_url.find('/iap') != -1:
             self.loginEntity = iapLogin(self.username, self.password, self.login_url, self.login_host, self.session)
             self.session.cookies = self.loginEntity.login()
