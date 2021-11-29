@@ -54,7 +54,7 @@ def main():
         print(msg)
         time.sleep(random.randint(3,5))
     lgp = qmsgpush()
-    lgp.set_single_push(key=config['users'][0]['user']['qmsg'], qq='1796434936')
+    lgp.set_single_push(key=config['users'][0]['user']['qmsg'], qq='')
     lgp.single_push(f'您好管理员，这是您的管理通知：\n', adminmsg)
 
 
